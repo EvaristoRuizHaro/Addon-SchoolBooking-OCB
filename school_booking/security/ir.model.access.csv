@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_school_booking_user,school.booking.user,model_school_booking,school_booking.group_school_booking_user,1,1,1,1
+access_school_booking_manager,school.booking.manager,model_school_booking,school_booking.group_school_booking_manager,1,1,1,1
+access_school_booking_internal,school.booking.internal,model_school_booking,base.group_user,1,1,1,1
+access_school_room_user,school.room.user,model_school_room,school_booking.group_school_booking_user,1,0,0,0
+access_school_room_manager,school.room.manager,model_school_room,school_booking.group_school_booking_manager,1,1,1,1
+access_school_room_internal,school.room.internal,model_school_room,base.group_user,1,1,1,1
+access_school_booking_reject_wizard_user,school.booking.reject.wizard.user,model_school_booking_reject_wizard,school_booking.group_school_booking_user,1,1,1,1
+access_school_booking_reject_wizard_manager,school.booking.reject.wizard.manager,model_school_booking_reject_wizard,school_booking.group_school_booking_manager,1,1,1,1
+access_school_booking_reject_wizard_internal,school.booking.reject.wizard.internal,model_school_booking_reject_wizard,base.group_user,1,1,1,1

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+  <rect width="900" height="520" fill="#f7f5f0"/>
+  <rect x="40" y="40" width="820" height="440" rx="18" fill="#ffffff" stroke="#d9dde3"/>
+  <rect x="80" y="90" width="740" height="40" rx="8" fill="#e9e2d6"/>
+  <rect x="80" y="150" width="220" height="120" rx="10" fill="#f1b65a"/>
+  <rect x="320" y="150" width="220" height="120" rx="10" fill="#88c0a9"/>
+  <rect x="560" y="150" width="220" height="120" rx="10" fill="#6fa8dc"/>
+  <text x="80" y="72" font-family="Arial, sans-serif" font-size="20" fill="#3a3f45">Calendario</text>
+</svg>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_school_booking_list" model="ir.ui.view">
+        <field name="name">school.booking.list</field>
+        <field name="model">school.booking</field>
+        <field name="arch" type="xml">
+            <list string="Reservas de Aula">
+                <field name="name" string="Referencia"/>
+                <field name="room_id" string="Aula/Recurso"/>
+                <field name="requester_id" string="Solicitante"/>
+                <field name="start_dt" string="Inicio"/>
+                <field name="end_dt" string="Fin"/>
+                <field name="duration_hours" string="Horas" widget="float_time"/>
+                <field name="state" string="Estado" widget="badge"
+                       decoration-success="state == 'approved'"
+                       decoration-warning="state in ('draft','to_approve')"
+                       decoration-danger="state in ('rejected','cancelled')"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_school_booking_form" model="ir.ui.view">
+        <field name="name">school.booking.form</field>
+        <field name="model">school.booking</field>
+        <field name="arch" type="xml">
+            <form string="Reserva de Aula">
+                <header>
+                    <button name="action_confirm" type="object" string="Enviar a aprobacion"
+                            invisible="state != 'draft'" class="btn-primary"/>
+                    <button name="action_approve" type="object" string="Aprobar"
+                            invisible="state != 'to_approve'" class="btn-success"
+                            groups="school_booking.group_school_booking_manager,base.group_system"/>
+                    <button name="action_open_reject_wizard" type="object" string="Rechazar"
+                            invisible="state != 'to_approve'" class="btn-danger"
+                            groups="school_booking.group_school_booking_manager,base.group_system"/>
+                    <button name="action_cancel" type="object" string="Cancelar"
+                            invisible="state in ('cancelled','rejected')"/>
+                    <button name="action_draft" type="object" string="Volver a borrador"
+                            invisible="state not in ('to_approve','approved','rejected','cancelled')"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,to_approve,approved,rejected,cancelled"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="room_id"/>
+                        <field name="start_dt"/>
+                        <field name="end_dt"/>
+                    </group>
+                    <group string="Notas">
+                        <field name="notes" placeholder="Notas adicionales..."/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_school_booking_search" model="ir.ui.view">
+        <field name="name">school.booking.search</field>
+        <field name="model">school.booking</field>
+        <field name="arch" type="xml">
+            <search string="Buscar Reservas">
+                <field name="name"/>
+                <field name="room_id"/>
+                <field name="requester_id"/>
+                <filter string="Borrador" name="draft" domain="[('state','=','draft')]"/>
+                <filter string="Esperando aprobacion" name="to_approve" domain="[('state','=','to_approve')]"/>
+                <filter string="Confirmadas" name="approved" domain="[('state','=','approved')]"/>
+                <filter string="Rechazadas" name="rejected" domain="[('state','=','rejected')]"/>
+                <filter string="Canceladas" name="cancelled" domain="[('state','=','cancelled')]"/>
+                <separator/>
+                <filter string="Mis reservas" name="my_reservations" domain="[('requester_id','=',uid)]"/>
+                <group expand="0" string="Agrupar por">
+                    <filter string="Aula" name="group_room" context="{'group_by':'room_id'}"/>
+                    <filter string="Estado" name="group_state" context="{'group_by':'state'}"/>
+                    <filter string="Solicitante" name="group_requester" context="{'group_by':'requester_id'}"/>
+                    <filter string="Fecha inicio" name="group_start" context="{'group_by':'start_dt'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_school_booking" model="ir.actions.act_window">
+        <field name="name">Reservas de Aula</field>
+        <field name="res_model">school.booking</field>
+        <field name="view_mode">calendar,list,form</field>
+        <field name="search_view_id" ref="view_school_booking_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crear una nueva reserva de aula
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_school_booking_reservations" name="Reservas de Aula"
+              parent="menu_school_booking_root"
+              action="action_school_booking"
+              sequence="20"
+              groups="base.group_user,school_booking.group_school_booking_user,school_booking.group_school_booking_manager"/>
+</odoo>

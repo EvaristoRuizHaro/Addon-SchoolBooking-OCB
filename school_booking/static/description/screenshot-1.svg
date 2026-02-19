@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+  <rect width="900" height="520" fill="#f4f6f8"/>
+  <rect x="40" y="40" width="820" height="440" rx="18" fill="#ffffff" stroke="#d9dde3"/>
+  <rect x="80" y="90" width="360" height="34" rx="8" fill="#e8eef6"/>
+  <rect x="80" y="150" width="300" height="34" rx="8" fill="#e8eef6"/>
+  <rect x="80" y="210" width="300" height="34" rx="8" fill="#e8eef6"/>
+  <rect x="80" y="280" width="520" height="120" rx="10" fill="#f0f2f5"/>
+  <text x="80" y="72" font-family="Arial, sans-serif" font-size="20" fill="#3a3f45">Reserva</text>
+</svg>

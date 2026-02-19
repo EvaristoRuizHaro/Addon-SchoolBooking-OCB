@@ -1,0 +1,22 @@
+{
+    'name': 'Evaristo: Reservas de Aulas y Recursos',
+    'version': '1.0',
+    'category': 'Education',
+    'summary': 'Reservas de aulas con control de solapes y aprobaciones',
+    'depends': ['base', 'mail'],
+    'data': [
+        'security/school_booking_groups.xml',
+        'security/ir.model.access.csv',
+        'security/school_booking_rules.xml',
+        'data/ir_sequence_data.xml',
+        'wizard/reject_booking_view.xml',
+        'views/school_booking_menus.xml',
+        'views/school_room_views.xml',
+        'views/school_booking_views.xml',
+        'views/school_booking_calendar.xml',
+    ],
+    'license': 'LGPL-3',
+    'installable': True,
+    'application': True,
+    'auto_install': False,
+}

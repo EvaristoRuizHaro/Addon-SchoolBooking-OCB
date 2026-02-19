@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="rule_school_booking_user_own" model="ir.rule">
+        <field name="name">Reservas propias (Usuario)</field>
+        <field name="model_id" ref="model_school_booking"/>
+        <field name="domain_force">[('requester_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('school_booking.group_school_booking_user'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+
+    <record id="rule_school_booking_internal_own" model="ir.rule">
+        <field name="name">Reservas propias (Interno)</field>
+        <field name="model_id" ref="model_school_booking"/>
+        <field name="domain_force">['|', ('requester_id', '=', user.id), ('requester_id', '=', False)]</field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+
+    <record id="rule_school_booking_manager_all" model="ir.rule">
+        <field name="name">Reservas todas (Manager)</field>
+        <field name="model_id" ref="model_school_booking"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('school_booking.group_school_booking_manager'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+</odoo>

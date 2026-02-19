@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="seq_school_booking" model="ir.sequence">
+        <field name="name">Secuencia Reserva de Aulas</field>
+        <field name="code">school.booking</field>
+        <field name="prefix">RES/</field>
+        <field name="padding">4</field>
+    </record>
+</odoo>

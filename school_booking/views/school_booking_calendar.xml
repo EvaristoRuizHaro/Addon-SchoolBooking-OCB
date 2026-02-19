@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_school_booking_calendar" model="ir.ui.view">
+        <field name="name">school.booking.calendar</field>
+        <field name="model">school.booking</field>
+        <field name="arch" type="xml">
+            <calendar string="Reservas" date_start="start_dt" date_stop="end_dt" color="room_id">
+                <field name="name"/>
+                <field name="room_id"/>
+                <field name="state"/>
+            </calendar>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_school_booking_reject_wizard_form" model="ir.ui.view">
+        <field name="name">school.booking.reject.wizard.form</field>
+        <field name="model">school.booking.reject.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Motivo de Rechazo">
+                <group>
+                    <field name="booking_id" readonly="1"/>
+                    <field name="reason" placeholder="Explica el motivo..."/>
+                </group>
+                <footer>
+                    <button name="action_reject_confirm" type="object" string="Rechazar" class="btn-danger"
+                            groups="school_booking.group_school_booking_manager,base.group_system"/>
+                    <button special="cancel" string="Cancelar" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
